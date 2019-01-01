@@ -10,6 +10,7 @@ trait ControllerInterface extends Publisher {
   def gridToString: String
   def gameStatus: GameStatus
   def createNewGrid: Unit
+  def movePiece(fromRow: Int, fromCol: Int, toRow: Int, toCol: Int): Boolean
 }
 
 class CellChanged extends Event

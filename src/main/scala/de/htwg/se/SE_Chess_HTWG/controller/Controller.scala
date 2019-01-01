@@ -12,8 +12,24 @@ class Controller (var grid: GridInterface) extends ControllerInterface with Publ
 
   override def createNewGrid: Unit = {
     grid = grid.createNewGrid
-    gameStatus = GameStatus.PLAYER2TURN
+    gameStatus = GameStatus.PLAYER1TURN
     publish(new CellChanged)
   }
 
+  override def movePiece(fromRow: Int, fromCol: Int, toRow: Int, toCol: Int): Boolean = {
+    val fromCell = grid.getCell(fromRow, fromCol)
+    gameStatus match {
+      case GameStatus.PLAYER1TURN => if (!(fromCell.isSet && fromCell.value.get.isWhite)) return false
+      case GameStatus.PLAYER2TURN => if (!(fromCell.isSet && !fromCell.value.get.isWhite)) return false
+    }
+
+    if (grid.movePiece(fromRow, fromCol, toRow, toCol)) {
+      gameStatus = GameStatus.nextPlayer(gameStatus)
+      publish(new CellChanged)
+      true
+    } else {
+      println("move false")
+      false
+    }
+  }
 }

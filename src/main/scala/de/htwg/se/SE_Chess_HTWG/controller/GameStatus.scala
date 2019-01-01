@@ -13,4 +13,12 @@ object GameStatus extends Enumeration {
   def message(gameStatus: GameStatus): String = {
     gameStatusToString(gameStatus)
   }
+
+  def nextPlayer(gameStatus: GameStatus): GameStatus = {
+    gameStatus match {
+      case PLAYER1TURN => PLAYER2TURN
+      case PLAYER2TURN => PLAYER1TURN
+      case _ => IDLE
+    }
+  }
 }

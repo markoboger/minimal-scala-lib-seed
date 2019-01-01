@@ -2,7 +2,7 @@ package de.htwg.se.SE_Chess_HTWG.model.gridComponent.pieceComponent
 
 import scala.math.abs
 
-class Queen(override val isWhite: Boolean) extends Piece {
+case class Queen(override val isWhite: Boolean) extends Piece {
   override def toString: String = "Q"
 
   override def isValidMove(fromRow: Int, fromCol: Int, toRow: Int, toCol: Int): Boolean = {
