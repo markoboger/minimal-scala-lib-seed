@@ -51,11 +51,6 @@ class GridBaseImpl(var cells: Matrix[Cell]) extends GridInterface {
       col <- 0 until BOARD_SIZE
     } if ((row + col) % 2 != 0) cells = replaceColor(row, col, true)
 
-    for {
-      row <- 0 until BOARD_SIZE
-      col <- 0 until BOARD_SIZE
-    } println("col: " + col + ", row: " + row + ", " + getCell(row, col).hashCode() + " " + getCell(row, col))
-
     this
   }
 }

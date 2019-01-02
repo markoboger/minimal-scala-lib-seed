@@ -12,7 +12,6 @@ class Mover(grid: GridInterface) {
       if (getPossibleMovementOptions(fromRow, fromCol).contains(toCell)) {
         grid.setCells(grid.replaceValue(toRow, toCol, fromCell.value))
         grid.setCells(grid.replaceValue(fromRow, fromCol, None))
-        println("a")
         true
       } else {
         false
@@ -24,7 +23,6 @@ class Mover(grid: GridInterface) {
     var possibleMovementOptionsList: List[Cell]= Nil
     if (grid.getCell(row, col).isSet) {
       var piece = grid.getCell(row, col).value.get
-      println("pice: " + piece)
       piece match {
         case Pawn(_) => possibleMovementOptionsList = getPossibleMovementOptionsForPawn(row, col, piece.isWhite)
         case Rook(_) => possibleMovementOptionsList = getPossibleMovementOptionsForRook(row, col, piece.isWhite)
@@ -57,18 +55,13 @@ class Mover(grid: GridInterface) {
 
   def getPossibleMovementOptionsForKnight(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
     var possibleMovementOptionsList: List[Cell]= Nil
-    var targetRows: List[Int] = List(row + 2, row + 2, row - 2, row - 2, row + 1, row + 1, row - 1, row - 1)
-    var targetCols: List[Int] = List(col + 1, col - 1, col + 1, col - 1, col + 2, col - 2, col + 2, col - 2)
+    val targetRows: List[Int] = List(row + 2, row + 2, row - 2, row - 2, row + 1, row + 1, row - 1, row - 1)
+    val targetCols: List[Int] = List(col + 1, col - 1, col + 1, col - 1, col + 2, col - 2, col + 2, col - 2)
 
-    for(i <- 0 until 8) {
+    for(i <- 0 until targetRows.size) {
       val targetRow = targetRows(i)
       val targetCol = targetCols(i)
-      if (targetRow < 0 || targetRow > 8 || targetCol < 0 || targetCol > 8) {
-        targetRows = targetRows.patch(i, Nil, 1)
-        targetCols = targetCols.patch(i, Nil, 1)
-      } else {
-        possibleMovementOptionsList = grid.getCell(targetRow, targetCol)::possibleMovementOptionsList
-      }
+      if (!(targetRow < 0 || targetRow > 7 || targetCol < 0 || targetCol > 7)) possibleMovementOptionsList = grid.getCell(targetRow, targetCol)::possibleMovementOptionsList
     }
 
     possibleMovementOptionsList.toStream.filter(cell => cell.isSet && cell.isWhite == isWhite)
@@ -86,18 +79,13 @@ class Mover(grid: GridInterface) {
 
   def getPossibleMovementOptionsForKing(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
     var possibleMovementOptionsList: List[Cell]= Nil
-    var targetRows: List[Int] = List(row + 1, row + 1, row + 1, row - 1, row - 1, row - 1, row, row)
-    var targetCols: List[Int] = List(col + 1, col - 1, col, col - 1, col + 1, col, col + 1, col - 1)
+    val targetRows: List[Int] = List(row + 1, row + 1, row + 1, row - 1, row - 1, row - 1, row, row)
+    val targetCols: List[Int] = List(col + 1, col - 1, col, col - 1, col + 1, col, col + 1, col - 1)
 
-    for(i <- 0 until 8) {
+    for(i <- 0 until targetRows.size) {
       val targetRow = targetRows(i)
       val targetCol = targetCols(i)
-      if (targetRow < 0 || targetRow > 8 || targetCol < 0 || targetCol > 8) {
-        targetRows = targetRows.patch(i, Nil, 1)
-        targetCols = targetCols.patch(i, Nil, 1)
-      } else {
-        possibleMovementOptionsList = grid.getCell(targetRow, targetCol)::possibleMovementOptionsList
-      }
+      if (!(targetRow < 0 || targetRow > 7 || targetCol < 0 || targetCol > 7)) possibleMovementOptionsList = grid.getCell(targetRow, targetCol)::possibleMovementOptionsList
     }
 
     possibleMovementOptionsList.toStream.filter(cell => cell.isSet && cell.isWhite == isWhite)
