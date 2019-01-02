@@ -52,7 +52,7 @@ class Mover(grid: GridInterface) {
 
   def getPossibleMovementOptionsForRook(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
     getMovementOptionsForRange(((row + 1) until 8).toList, List.fill(8)(col), isWhite):::getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite):::
-      getMovementOptionsForRange((0 until (row - 1)).reverse.toList, List.fill(8)(col), isWhite:::getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite)
+      getMovementOptionsForRange((0 until (row - 1)).reverse.toList, List.fill(8)(col), isWhite):::getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite)
   }
 
   def getPossibleMovementOptionsForKnight(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
