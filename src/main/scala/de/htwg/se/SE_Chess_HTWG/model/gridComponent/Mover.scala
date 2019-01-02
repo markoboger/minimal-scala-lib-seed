@@ -10,7 +10,6 @@ class Mover(grid: GridInterface) {
       val toCell = grid.getCell(toRow, toCol)
 
       if (getPossibleMovementOptions(fromRow, fromCol).contains(toCell)) {
-
         grid.setCells(grid.replaceValue(toRow, toCol, fromCell.value))
         grid.setCells(grid.replaceValue(fromRow, fromCol, None))
         println("a")
@@ -52,30 +51,23 @@ class Mover(grid: GridInterface) {
   }
 
   def getPossibleMovementOptionsForRook(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
-    val possibleMovementOptionsList: List[Cell]= Nil
-
-    getMovementOptionsForRange(((row + 1) until 8).toList, List.fill(8)(col), isWhite):::possibleMovementOptionsList
-    getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite):::possibleMovementOptionsList
-    getMovementOptionsForRange((0 until (row - 1)).reverse.toList, List.fill(8)(col), isWhite):::possibleMovementOptionsList
-    getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite):::possibleMovementOptionsList
-
-    possibleMovementOptionsList
+    getMovementOptionsForRange(((row + 1) until 8).toList, List.fill(8)(col), isWhite):::getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite):::
+      getMovementOptionsForRange((0 until (row - 1)).reverse.toList, List.fill(8)(col), isWhite:::getMovementOptionsForRange(List.fill(8)(row), (0 until (col - 1)).reverse.toList, isWhite)
   }
 
   def getPossibleMovementOptionsForKnight(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
-    val possibleMovementOptionsList: List[Cell]= Nil
-    val targetRows: List[Int] = Nil
-    val targetCols: List[Int] = Nil
-
-    row + 2::row + 2::row - 2::row - 2::row + 1::row + 1::row - 1:: row - 1::targetRows
-    col + 1::col - 1::col + 1::col - 1::col + 2::col - 2::col + 2:: col - 2::targetCols
+    var possibleMovementOptionsList: List[Cell]= Nil
+    var targetRows: List[Int] = List(row + 2, row + 2, row - 2, row - 2, row + 1, row + 1, row - 1, row - 1)
+    var targetCols: List[Int] = List(col + 1, col - 1, col + 1, col - 1, col + 2, col - 2, col + 2, col - 2)
 
     for(i <- 0 until 8) {
       val targetRow = targetRows(i)
       val targetCol = targetCols(i)
       if (targetRow < 0 || targetRow > 8 || targetCol < 0 || targetCol > 8) {
-        targetRows.patch(i, Nil, 1)
-        targetCols.patch(i, Nil, 1)
+        targetRows = targetRows.patch(i, Nil, 1)
+        targetCols = targetCols.patch(i, Nil, 1)
+      } else {
+        possibleMovementOptionsList = grid.getCell(targetRow, targetCol)::possibleMovementOptionsList
       }
     }
 
@@ -84,38 +76,27 @@ class Mover(grid: GridInterface) {
   }
 
   def getPossibleMovementOptionsForBishop(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
-    val possibleMovementOptionsList: List[Cell]= Nil
-
-    getMovementOptionsForRange(((row + 1) until 8).toList, ((col + 1) until 8).toList, isWhite):::possibleMovementOptionsList
-    getMovementOptionsForRange(((row + 1) until 8).toList, (0 until (col - 1)).reverse.toList, isWhite):::possibleMovementOptionsList
-    getMovementOptionsForRange((0 until (row - 1)).reverse.toList, ((col + 1) until 8).toList, isWhite):::possibleMovementOptionsList
-    getMovementOptionsForRange((0 until (row - 1)).reverse.toList, (0 until (col - 1)).reverse.toList, isWhite):::possibleMovementOptionsList
-
-    possibleMovementOptionsList
+    getMovementOptionsForRange(((row + 1) until 8).toList, ((col + 1) until 8).toList, isWhite):::getMovementOptionsForRange(((row + 1) until 8).toList, (0 until (col - 1)).reverse.toList, isWhite):::
+      getMovementOptionsForRange((0 until (row - 1)).reverse.toList, ((col + 1) until 8).toList, isWhite):::getMovementOptionsForRange((0 until (row - 1)).reverse.toList, (0 until (col - 1)).reverse.toList, isWhite)
   }
 
   def getPossibleMovementOptionsForQueen(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
-    val possibleMovementOptionsList: List[Cell]= Nil
-
-    getPossibleMovementOptionsForBishop(row, col, isWhite):::getPossibleMovementOptionsForRook(row, col, isWhite):::possibleMovementOptionsList
-
-    possibleMovementOptionsList
+    getPossibleMovementOptionsForBishop(row, col, isWhite):::getPossibleMovementOptionsForRook(row, col, isWhite)
   }
 
   def getPossibleMovementOptionsForKing(row: Int, col: Int, isWhite: Boolean): List[Cell] = {
-    val possibleMovementOptionsList: List[Cell]= Nil
-    val targetRows: List[Int] = Nil
-    val targetCols: List[Int] = Nil
-
-    row + 1::row + 1::row + 1::row - 1::row - 1::row - 1::row::row::targetRows
-    col + 1::col - 1::col::col - 1::col + 1::col::col + 1:: col - 1::targetCols
+    var possibleMovementOptionsList: List[Cell]= Nil
+    var targetRows: List[Int] = List(row + 1, row + 1, row + 1, row - 1, row - 1, row - 1, row, row)
+    var targetCols: List[Int] = List(col + 1, col - 1, col, col - 1, col + 1, col, col + 1, col - 1)
 
     for(i <- 0 until 8) {
       val targetRow = targetRows(i)
       val targetCol = targetCols(i)
       if (targetRow < 0 || targetRow > 8 || targetCol < 0 || targetCol > 8) {
-        targetRows.patch(i, Nil, 1)
-        targetCols.patch(i, Nil, 1)
+        targetRows = targetRows.patch(i, Nil, 1)
+        targetCols = targetCols.patch(i, Nil, 1)
+      } else {
+        possibleMovementOptionsList = grid.getCell(targetRow, targetCol)::possibleMovementOptionsList
       }
     }
 
@@ -124,7 +105,7 @@ class Mover(grid: GridInterface) {
   }
 
   def getMovementOptionsForRange(rowList: List[Int], colList: List[Int], isWhite: Boolean): List[Cell] = {
-    val possibleMovementOptionsList: List[Cell]= Nil
+    var possibleMovementOptionsList: List[Cell]= Nil
     val size: Int = if (rowList.size < colList.size) rowList.size else colList.size
 
     var foundPiece: Boolean = false
@@ -133,7 +114,7 @@ class Mover(grid: GridInterface) {
       val cell = grid.getCell(rowList(i), colList(i))
       if (cell.isSet) {
         foundPiece = true
-        if (cell.value.get.isWhite != isWhite) cell::possibleMovementOptionsList
+        if (cell.value.get.isWhite != isWhite) possibleMovementOptionsList = cell::possibleMovementOptionsList
       }
     }
     possibleMovementOptionsList
