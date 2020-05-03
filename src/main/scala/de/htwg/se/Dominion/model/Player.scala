@@ -1,4 +1,4 @@
-package de.htwg.se.Rush_Hour.model
+package de.htwg.se.Dominion.model
 
 case class Player(name: String) {
    override def toString:String = name
