@@ -9,12 +9,11 @@ case class Card(cardID: Int, cardType: Int, cost:Int,
                 extraBuys: Int, extraActions: Int, extraGold: Int,
                 extraDraws: Int){
   def usesAction: Boolean = cardType == 1
-
 }
 
 case class Effect(cardID: Int) {
   val effect: Unit = cardID match {
-    case 8  => //Burggraben
+    case 8 => //Burggraben
     case 11 => //Keller
     case 13 => //Miliz
     case 14 => //Mine
@@ -25,10 +24,10 @@ case class Effect(cardID: Int) {
 
 val copperCard = Card(1,1,0,0,0,0,0)
 val silverCard = Card(2,1,0,0,0,0,0)
-val goldCard = Card(3,1,0,0,0,0,0)
+val goldCard   = Card(3,1,0,0,0,0,0)
 
 val propertyCard = Card(4,2,0,0,0,0,0)
-val dukedomCard = Card(5,2,0,0,0,0,0)
+val dukedomCard  = Card(5,2,0,0,0,0,0)
 val provinceCard = Card(6,2,0,0,0,0,0)
 
 val moatCard = Card(8,3,2,0,0,0,2)
@@ -86,6 +85,7 @@ case class playerDrawPile(cardAmount: Int, card: Card) {
 case class playerDiscardPile(card: Card, amount: Int){
 
 }
+
 case class playerHand(card: Card, startAmount: Int)
 
 case class playerTurn(nrActions: Int, nrBuys: Int, draw: Int)
