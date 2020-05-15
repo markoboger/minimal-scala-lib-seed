@@ -4,8 +4,8 @@ import de.htwg.se.Dominion.model.Player
 
 object Dominion {
   def main(args: Array[String]): Unit = {
-    val student = Player("Jakob Strakhof")
     println("Dominion\n")
+    val student = Player("Jakob Strakhof und Karsten Huber")
     println("Hello, " + student.name)
   }
 }
