@@ -8,14 +8,14 @@ case class Card(cardID: Int, name: String, cardType: Int, cost:Int,
 
   override def toString:String = name
 
-//  case class Effect(cardID: Int) {
-//    val effect: Unit = cardID match {
-//      case 8 => //Burggraben
-//      case 11 => //Keller
-//      case 13 => //Miliz
-//      case 14 => //Mine
-//      case 16 => //Umbau
-//      case 17 => //Werkstatt
-//    }
-//  }
+  //  case class Effect(cardID: Int) {
+  //    val effect: Unit = cardID match {
+  //      case 8 => //Burggraben
+  //      case 11 => //Keller
+  //      case 13 => //Miliz
+  //      case 14 => //Mine
+  //      case 16 => //Umbau
+  //      case 17 => //Werkstatt
+  //    }
+  //  }
 }

@@ -24,10 +24,5 @@ case class Board() {
   println("_______________ _______________\n")
   println("|discard pile | |draw pile    |\n")
   println("|_____________| |_____________|\n")
-  println("\n")
-  println("_______________ _______________ ______________ _______________ ______________\n")
-  println("|handcard 1   | |handcard 2   | |handcard 3  | |handcard 4   | |handcard 5  |\n")
-  println("|effects 1    | |effects 2    | |effects 3   | |effects 4    | |effects 5   |\n")
-  println("|_____________| |_____________| |____________| |_____________| |____________|\n")
 
 }

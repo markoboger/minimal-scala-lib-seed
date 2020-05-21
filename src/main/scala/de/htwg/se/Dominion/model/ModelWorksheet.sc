@@ -1,9 +1,5 @@
 import scala.util.Random
 
-object printProject {
-  println("Project: Dominion")
-}
-printProject
 //cardtype: 1-> money, 2-> points, 3-> action
 case class Card(cardID: Int, cardType: Int, cost:Int,
                 extraBuys: Int, extraActions: Int, extraGold: Int,
@@ -90,3 +86,4 @@ case class playerHand(card: Card, startAmount: Int)
 
 case class playerTurn(nrActions: Int, nrBuys: Int, draw: Int)
 
+for (i <- 1 to 3) println(i)
