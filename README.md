@@ -22,7 +22,7 @@ The easiest way to create your own project from this seed is
 
 After that, please rename
 * the Project name from htwg-scala-seed to <your game name>
-* the the package structure from de.htwg.se.yourgame to de.htwg.se.<your game name>
+* the the package structure from de.htwg.se.Hero to de.htwg.se.<your game name>
 * the name of the project in the build.sbt file from htwg-scala-seed to <your game name>
 * the main Class YourGame to <YourGameName>
 
