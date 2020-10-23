@@ -12,7 +12,7 @@ object Hero {
   }
 
   def getBoard() : String = {
-    var board = " "
+    var board = ""
     for ( l <- 0 to 10) {
       for (line <- 0 to 61) {
         board = board + "-"
