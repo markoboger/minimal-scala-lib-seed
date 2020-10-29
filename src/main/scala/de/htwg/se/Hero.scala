@@ -5,7 +5,8 @@ object Hero {
         val student = Player("Alina & Ronny")
         println("Hello, " + student.name)
         println(gameName())
-        println(getBoardFinshed())
+        //println(getBoardFinshed())
+        println(stringTry())
     }
     def gameName() : String = {
         "Hero"
@@ -27,6 +28,16 @@ object Hero {
             }
             board = board + "\n"
         }
+        board
+    }
+
+    def stringTry() : String = {
+        //12 lines + 61*-
+        val line = "-" * 61
+        //11 fields + 15 modul
+        val field = ("|   " * 15)+ "|"
+        //11 lines & fields + 1 line
+        val board = (line + "\n" + field.toString + "\n") * 11 + line
         board
     }
 
