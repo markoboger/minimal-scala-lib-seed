@@ -16,22 +16,22 @@ object Hero {
         "Hero"
     }
 
-    val lines: String = "=" * 7
+    val lines: String = "=" * 7 * 15 + "\n"
 
     def mid(x: String): String = "I " + x + " I"
 
     def line(): String = {
-        val line = Array(lines * 15 + "\n" + mid("HA.") + mid("   ") * 13 + mid(".FA") + "\n",
-            lines * 15 + "\n" + mid("MA.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid("MAG") + "\n",
-            lines * 15 + "\n" + mid("RO.") + mid("   ") * 6 + mid("xxx") + mid("   ") * 6 + mid(".CE") + "\n",
-            lines * 15 + "\n" + mid("   ") * 15 + "\n",
-            lines * 15 + "\n" + mid("   ") * 5 + mid("xxx") * 2 + mid("   ") * 8 + "\n",
-            lines * 15 + "\n" + mid("AN.") + mid("   ") * 13 + mid(".DE") + "\n",
-            lines * 15 + "\n" + mid("   ") * 15 + "\n",
-            lines * 15 + "\n" + mid("   ") * 15 + "\n",
-            lines * 15 + "\n" + mid("CH.") + mid("   ") * 6 + mid("xxx") * 2 + mid("   ") * 5 + mid(".EF") + "\n",
-            lines * 15 + "\n" + mid("ZE.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid(".PI") + "\n",
-            lines * 15 + "\n" + mid("CR.") + mid("   ") * 13 + mid(".HO") + "\n" + lines * 15 + "\n",
+        val line = Array(lines + "\n" + mid("HA.") + mid("   ") * 13 + mid(".FA") + "\n",
+            lines + mid("MA.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid("MAG") + "\n",
+            lines + mid("RO.") + mid("   ") * 6 + mid("xxx") + mid("   ") * 6 + mid(".CE") + "\n",
+            lines + mid("   ") * 15 + "\n",
+            lines + mid("   ") * 5 + mid("xxx") * 2 + mid("   ") * 8 + "\n",
+            lines + mid("AN.") + mid("   ") * 13 + mid(".DE") + "\n",
+            lines + mid("   ") * 15 + "\n",
+            lines + mid("   ") * 15 + "\n",
+            lines + mid("CH.") + mid("   ") * 6 + mid("xxx") * 2 + mid("   ") * 5 + mid(".EF") + "\n",
+            lines + mid("ZE.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid(".PI") + "\n",
+            lines + mid("CR.") + mid("   ") * 13 + mid(".HO") + "\n" + lines,
             "I Player 1 I" + " " * 81 + "I Player 2 I" + "\n")
 
         val board = "%s%s%s%s%s%s%s%s%s%s%s%s"
