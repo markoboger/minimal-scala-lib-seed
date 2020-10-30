@@ -82,7 +82,7 @@ object Hero {
             "|ZE." + s*5 + "|xxx" + s*7 + "|.PI|",
             "|CR." + s*13 + "|.HO|")
         //11 lines & fields + 1 line
-        val etwas = 3
+
 
         val board = (line + "\n" + field(0) + "\n" + //) * 11 + line
             line + "\n" + field(1) + "\n" +
