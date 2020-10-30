@@ -7,7 +7,8 @@ object Hero {
         val student = Player("Alina & Ronny")
         println("Hello, " + student.name)
         println(gameName())
-        println(line())
+        println(stringTry())
+        //println(line())
     }
     def gameName() : String = {
         "Hero"
@@ -81,7 +82,7 @@ object Hero {
             "|ZE." + s*5 + "|xxx" + s*7 + "|.PI|",
             "|CR." + s*13 + "|.HO|")
         //11 lines & fields + 1 line
-        /*
+
         val board = (line + "\n" + field(0) + "\n" + //) * 11 + line
             line + "\n" + field(1) + "\n" +
             line + "\n" + field(2) + "\n" +
@@ -93,21 +94,6 @@ object Hero {
             line + "\n" + field(8) + "\n" +
             line + "\n" + field(9) + "\n" +
             line + "\n" + field(10) + "\n" + line)
-            */
-        var i = 0
-        //val board = (line + "\n" + field(i = i+1) + "\n" ) * 11 + line
-        //val board = ("%1$s\n%2$s\n".format(line, field(i))) *11
-        val board = f"$line%s\n${field(0)}%s\n" +
-            f"$line%s\n${field(1)}%s\n" +
-            f"$line%s\n${field(2)}%s\n" +
-            f"$line%s\n${field(3)}%s\n" +
-            f"$line%s\n${field(4)}%s\n" +
-            f"$line%s\n${field(5)}%s\n" +
-            f"$line%s\n${field(6)}%s\n" +
-            f"$line%s\n${field(7)}%s\n" +
-            f"$line%s\n${field(8)}%s\n" +
-            f"$line%s\n${field(9)}%s\n" +
-            f"$line%s\n${field(10)}%s\n"
         board
     }
 
