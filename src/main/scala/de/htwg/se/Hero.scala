@@ -1,12 +1,13 @@
 package de.htwg.se.Hero.model
 
+import scala.math.sqrt
+
 object Hero {
     def main(args: Array[String]): Unit = {
         val student = Player("Alina & Ronny")
         println("Hello, " + student.name)
         println(gameName())
-        //println(getBoardFinshed())
-        println(stringTry())
+        println(line())
     }
     def gameName() : String = {
         "Hero"
@@ -28,6 +29,37 @@ object Hero {
             }
             board = board + "\n"
         }
+        board
+    }
+
+    def lines() : String = {
+        val x = "=" * 7
+        x
+    }
+
+    def mid(x:String) : String = {
+        val y = "I " + x + " I"
+        y
+    }
+
+
+
+    def line () : String = {
+        val line = Array(lines() * 15 + "\n" + mid("HA.") + mid("   ") * 13 + mid(".FA") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("MA.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid("MAG") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("RO.") + mid("   ") * 6 + mid("xxx") + mid("   ") * 6 + mid(".CE") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 15 + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 5 + mid("xxx") * 2 + mid("   ") * 8 +"\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("AN.") + mid("   ") * 13 + mid(".DE") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 15 + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 15 + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("CH.") + mid("   ") * 6 + mid("xxx") * 2 + mid("   ") * 5 + mid(".EF") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("ZE.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid(".PI") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("CR.") + mid("   ") * 13 + mid(".HO") + "\n" + lines() * 15 + "\n",
+            "I Player 1 I" + " " * 81 + "I Player 2 I" + "\n")
+
+        val board = "%s%s%s%s%s%s%s%s%s%s%s%s"
+            .format(line(11), line(0), line(1), line(2), line(3), line(4), line(5), line(6), line(7), line(8), line(9), line(10))
         board
     }
 
