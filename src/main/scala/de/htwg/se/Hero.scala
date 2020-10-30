@@ -7,31 +7,29 @@ object Hero {
         val student = Player("Alina & Ronny")
         println("Hello, " + student.name)
         println(gameName())
-        getBoard()
-        for ( i <- 0 to 10) {
-            for (j <- 0 to 14) {
-                printf(field(i)(j).toString)
-            }
-        }
+        println(line())
     }
-
     def gameName() : String = {
         "Hero"
     }
 
-    case class Cell (unit:String) {
-        override def toString: String = "-" * 7 + "\nI " + unit + " I\n" + "-" * 7
-    }
-
-    case class Field(cells: Array[Cell])
-    val field = Array.ofDim[Cell](11,15)
-
-    def getBoard() : Unit = {
-        for ( i <- 0 to 10) {
-            for (j <- 0 to 14) {
-                field(i)(j) = Cell("   ")
+    def getBoard() : String = {
+        var board = ""
+        for ( l <- 0 to 10) {
+            for (line <- 0 to 61) {
+                board = board + "-"
             }
+            board = board + "\n"
+            for (vert <- 0 to 61) {
+                if(vert % 3 == 0) {
+
+                } else {
+
+                }
+            }
+            board = board + "\n"
         }
+        board
     }
 
     def lines() : String = {
@@ -44,17 +42,19 @@ object Hero {
         y
     }
 
+
+
     def line () : String = {
-        val line = Array(lines() * 15 + "\n" + mid("HA.") + mid("   ") * 13 + mid(".FA") + "\n",
-            lines() * 15 + "\n" + mid("MA.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid("MAG") + "\n",
-            lines() * 15 + "\n" + mid("RO.") + mid("   ") * 6 + mid("xxx") + mid("   ") * 6 + mid(".CE") + "\n",
-            lines() * 15 + "\n" + mid("   ") * 15 + "\n",
-            lines() * 15 + "\n" + mid("   ") * 5 + mid("xxx") * 2 + mid("   ") * 8 + "\n",
-            lines() * 15 + "\n" + mid("AN.") + mid("   ") * 13 + mid(".DE") + "\n",
-            lines() * 15 + "\n" + mid("   ") * 15 + "\n",
-            lines() * 15 + "\n" + mid("   ") * 15 + "\n",
-            lines() * 15 + "\n" + mid("CH.") + mid("   ") * 6 + mid("xxx") * 2 + mid("   ") * 5 + mid(".EF") + "\n",
-            lines() * 15 + "\n" + mid("ZE.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid(".PI") + "\n",
+        val line = Array(lines() * 15 + "\n" + mid("HA.") + mid("   ") * 13 + mid(".FA") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("MA.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid("MAG") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("RO.") + mid("   ") * 6 + mid("xxx") + mid("   ") * 6 + mid(".CE") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 15 + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 5 + mid("xxx") * 2 + mid("   ") * 8 +"\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("AN.") + mid("   ") * 13 + mid(".DE") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 15 + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("   ") * 15 + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("CH.") + mid("   ") * 6 + mid("xxx") * 2 + mid("   ") * 5 + mid(".EF") + "\n" + lines() * 15 + "\n",
+            lines() * 15 + "\n" + mid("ZE.") + mid("   ") * 5 + mid("xxx") + mid("   ") * 7 + mid(".PI") + "\n" + lines() * 15 + "\n",
             lines() * 15 + "\n" + mid("CR.") + mid("   ") * 13 + mid(".HO") + "\n" + lines() * 15 + "\n",
             "I Player 1 I" + " " * 81 + "I Player 2 I" + "\n")
 
@@ -63,23 +63,23 @@ object Hero {
         board
     }
 
-
     def stringTry() : String = {
         //12 lines + 61*-
         val line = "-" * 61
+        val s = "|   "
         //11 fields + 15 modul
         val field = Array(
-            ("|HA." + "|   " * 13)+ "|.FA|",
-            ("|MA." + "|   " * 5) + "|xxx" + "|   " * 7 + "|MAG" + "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|",
-            ("|   " * 15)+ "|")
+            "|HA." + s*13+ "|.FA|",
+            "|MA." + s*5 + "|xxx" + s*7 + "|MAG|",
+            "|RO.|..." + s*5 + "|xxx" + s*5 + "|..|.CE|",
+            s*15 + "|",
+            s*5 + "|xxx|xxx" + s * 8 + "|",
+            "|AN." + s*13 + "|.DE|",
+            (s*15) + "|",
+            (s*15) + "|",
+            "|CH.|..." + s*5 + "|xxx|xxx" + s*5 + "|.EF|",
+            "|ZE." + s*5 + "|xxx" + s*7 + "|.PI|",
+            "|CR." + s*13 + "|.HO|")
         //11 lines & fields + 1 line
         /*
         val board = (line + "\n" + field(0) + "\n" + //) * 11 + line
