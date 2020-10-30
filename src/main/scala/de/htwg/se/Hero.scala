@@ -94,7 +94,7 @@ object Hero {
             line + "\n" + field(8) + "\n" +
             line + "\n" + field(9) + "\n" +
             line + "\n" + field(10) + "\n" + line)
-        board
+        board//
     }
 
     def getBoardFinshed() : String = {
